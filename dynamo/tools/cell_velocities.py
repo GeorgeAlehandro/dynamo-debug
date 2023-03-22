@@ -323,9 +323,11 @@ def cell_velocities(
             else:
                 reduceDimension(adata, layer=layer, reduction_method=basis)
                 X_embedding = adata.obsm[layer + "_" + basis]
-
+    print(basis)
     if X.shape[0] != X_embedding.shape[0]:
         raise Exception("X and X_embedding do not have the same number of samples.")
+    print(X.shape[1])
+    print(X_embedding.shape[1])
     if X.shape[1] < X_embedding.shape[1]:
         raise Exception(
             "The number of dimensions of X is smaller than that of the embedding. Try lower the min_r2, "
